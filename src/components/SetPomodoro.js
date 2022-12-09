@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from "./Button";
+import { SettingsContext } from "../context/SettingsContext";
 
 const SetPomodoro = () => {
+
+    const {updateExecute} = useContext(SettingsContext)
 
     const [newTimer, setNewTimer] = useState({
         work: 0.3,
@@ -39,6 +42,7 @@ const SetPomodoro = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        updateExecute(newTimer)
         
     }
 
@@ -46,9 +50,9 @@ const SetPomodoro = () => {
         <div className="form-container">
             <form noValidate>
                 <div className="input-wrapper">
-                    <input className="input" name="work" onChange={handleChange} value={newTimer.work}/>
-                    <input className="input" name="shortBreak" onChange={handleChange} value={newTimer.short} />
-                    <input className="input" name="longBreak" onChange={handleChange} value={newTimer.long}/>
+                    <input className="input" name="work" onChange={handleChange} value={newTimer.work | 0}/>
+                    <input className="input" name="shortBreak" onChange={handleChange} value={newTimer.short | 0} />
+                    <input className="input" name="longBreak" onChange={handleChange} value={newTimer.long | 0}/>
                 </div>
                 <Button title="Set Timer"  _callback={handleSubmit}/>
 
