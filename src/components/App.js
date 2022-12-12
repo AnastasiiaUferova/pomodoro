@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Button from './Button';
 import SetPomodoro from './SetPomodoro';
 import CountdownAnimation from './CountdownAnimation';
@@ -17,13 +17,15 @@ function App() {
     pauseTimer,
     updateExecute} = useContext(SettingsContext);
 
-    useEffect(() => updateExecute(executing), [executing, startAnimation])
+    useEffect(() => updateExecute(executing), [executing, startAnimation]);
+
+    const [key, setKey] = useState(pomodoro);
 
   return (
     <div className="App">
       <h1>Pomodoro</h1>
       <small>Be productive the right way</small>
-      {pomodoro ===0 ?
+      {pomodoro === 0 ?
       <SetPomodoro /> : 
       <>
     <ul className='labels'>
@@ -55,8 +57,8 @@ function App() {
     <div className="time-container">
         <div className='time-wrapper'>
              <CountdownAnimation
-                  key={pomodoro}
                   timer={pomodoro}
+                  key={key}
                   animate={startAnimation}>
                     {children}
            
@@ -64,8 +66,9 @@ function App() {
         </div>
     </div>
     <div className='button-wrapper'>
-      <Button title="Start" actuveClass= {!startAnimation && "active"} _callback={startTimer} />
-      <Button title="Pause" actuveClass= {startAnimation && "active"} _callback={pauseTimer} />
+      <Button title="Start" activeClass= {startAnimation && "active-label"} _callback={startTimer} />
+      <Button title="Pause" activeClass= {!startAnimation && "active-label"} _callback={pauseTimer} />
+      <Button title="Restart"  _callback={() => setKey(prevKey => prevKey + 1)} />
     </div>
       </>
 }

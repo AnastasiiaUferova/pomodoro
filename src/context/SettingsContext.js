@@ -4,8 +4,9 @@ export const SettingsContext = createContext()
 const SettingsContextProvider = (props) => {
     
     const [pomodoro, setPomodoro] = useState(0);
-    const [executing, setExecuting] = useState({});
+    const [executing, setExecuting] = useState({}); //execution time settings
     const [startAnimation, setStartAnimation] = useState(false);
+
 
     function startTimer() {
         setStartAnimation(true);
@@ -19,10 +20,11 @@ const SettingsContextProvider = (props) => {
         setStartAnimation(false);
     }
 
+
     const SettingsBtn = () => {
         setExecuting({})
         setPomodoro(0)
-    }
+    } //restart timer
 
     //update the settings of the timer
     const updateExecute = (updatedSettings) => {
@@ -38,16 +40,17 @@ const SettingsContextProvider = (props) => {
         setTimerTime(executing)
     }
 
-    const setTimerTime = evaluate => {
-        switch(evaluate.active) {
+    //setting duration to timer
+    const setTimerTime = timer => {
+        switch(timer.active) {
             case 'work':
-                setPomodoro(evaluate.work)
+                setPomodoro(timer.work)
                 break;
             case 'short':
-                setPomodoro(evaluate.short)
+                setPomodoro(timer.short)
                 break;
             case 'long':
-                setPomodoro(evaluate.long)
+                setPomodoro(timer.long)
                 break;
             default:
                 setPomodoro(0)
