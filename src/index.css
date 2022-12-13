@@ -38,6 +38,10 @@ body {
   margin-top: 2rem;
 }
 
+li {
+  display: flex;
+}
+
 .active-label {
   color: #0C0E1B;
   background-color: #FE6F6B;

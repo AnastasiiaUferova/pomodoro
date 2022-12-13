@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { SettingsContext } from "../context/SettingsContext";
+import useSound from 'use-sound';
+import Alarm from "../sounds/Alarm.wav"
 
 const CountdownAnimation = ({ timer=20, children}) => {
 
-    const {stopTimer, startAnimation, pomodoro} = useContext(SettingsContext)
+    const {stopTimer, startAnimation, pomodoro, setOpen} = useContext(SettingsContext);
+    const [play] = useSound(Alarm,  { volume: 0.25 });
 
     return (
         <CountdownCircleTimer
@@ -17,6 +20,8 @@ const CountdownAnimation = ({ timer=20, children}) => {
         trailColor="#151932"
         onComplete={()=>{
             stopTimer() 
+            setOpen(true)
+            play()
         }}
         >
         {children}

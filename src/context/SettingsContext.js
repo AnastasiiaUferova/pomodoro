@@ -6,6 +6,7 @@ const SettingsContextProvider = (props) => {
     const [pomodoro, setPomodoro] = useState(0);
     const [executing, setExecuting] = useState({}); //execution time settings
     const [startAnimation, setStartAnimation] = useState(false);
+    const [isOpen, setOpen] = React.useState(false);
 
 
     function startTimer() {
@@ -76,7 +77,9 @@ const SettingsContextProvider = (props) => {
         SettingsBtn,
         setCurrentTimer,
         pauseTimer,
-        children
+        children,
+        setOpen, 
+        isOpen
         }}>
         {props.children}
     </SettingsContext.Provider>

@@ -3,6 +3,7 @@ import Button from './Button';
 import SetPomodoro from './SetPomodoro';
 import CountdownAnimation from './CountdownAnimation';
 import { SettingsContext } from '../context/SettingsContext';
+import CustomizedSnackbars from "../components/Alert";
 
 
 function App() {
@@ -21,12 +22,27 @@ function App() {
 
     const [key, setKey] = useState(pomodoro);
 
+    const title = () => {
+      if (executing.active === 'work') {
+        return 'work'
+      }
+
+      else if (executing.active === 'short') {
+        return 'short break'
+      }
+
+      else {
+        return 'long break'
+      }
+    }
+
   return (
     <div className="App">
       <h1>Pomodoro</h1>
       <small>Be productive the right way</small>
       {pomodoro === 0 ?
-      <SetPomodoro /> : 
+      <SetPomodoro /> 
+      : 
       <>
     <ul className='labels'>
       <li>
@@ -54,6 +70,7 @@ function App() {
       </li>
     </ul>
     <Button title="Settings" _callback={SettingsBtn} />
+    <CustomizedSnackbars title={title()}></CustomizedSnackbars>
     <div className="time-container">
         <div className='time-wrapper'>
              <CountdownAnimation
