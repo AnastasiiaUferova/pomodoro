@@ -1,4 +1,4 @@
-# REACT.js 'TO-DO List' interactive web application 
+# REACT.js 'POMODORO' interactive web application 
 
 ## [Check out the project on Vercel](https://pomodoro-anastasiiauferova.vercel.app)
 
