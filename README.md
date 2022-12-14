@@ -10,7 +10,7 @@ This project is an interactive Pomodoro timer with work timer, and long & short 
 
 * Setting time for work, short & long breaks;
 * Alerts when time is up;
-* Cirle countdown animation for better visibility;
+* Circle countdown animation for better visibility;
 
 ## Technologies:
 
