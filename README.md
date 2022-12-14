@@ -18,7 +18,7 @@ This project is an interactive Pomodoro timer with work timer, and long & short 
 * Hooks (useState, useEffect, useContext, useSound);
 * JavaScript;
 * React-countdown-circle-timer library;
-* MUI: the React compontnet library (for alerts);
+* MUI: the React component library (for alerts);
 * Use-sound library (for "time's up" signals)
 * Git;
 
