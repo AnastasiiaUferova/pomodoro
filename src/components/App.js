@@ -22,6 +22,10 @@ function App() {
 
     const [key, setKey] = useState(pomodoro);
 
+    //const classStart = `${startAnimation ? "active-label" : ""}`
+   // const classPause = `${!startAnimation ? "active-label" : ""}`
+
+
     const title = () => {
       if (executing.active === 'work') {
         return 'Your work time is up!'
@@ -83,8 +87,8 @@ function App() {
         </div>
     </div>
     <div className='button-wrapper'>
-      <Button title="Start" activeClass= {startAnimation && "active-label"} _callback={startTimer} />
-      <Button title="Pause" activeClass= {!startAnimation && "active-label"} _callback={pauseTimer} />
+      <Button title="Start"  _callback={startTimer} />
+      <Button title="Pause"  _callback={pauseTimer} />
       <Button title="Restart"  _callback={() => setKey(prevKey => prevKey + 1)} />
     </div>
       </>
