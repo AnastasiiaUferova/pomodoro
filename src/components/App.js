@@ -24,15 +24,15 @@ function App() {
 
     const title = () => {
       if (executing.active === 'work') {
-        return 'work'
+        return 'Your work time is up!'
       }
 
       else if (executing.active === 'short') {
-        return 'short break'
+        return 'Your short break time is up!'
       }
 
       else {
-        return 'long break'
+        return 'Your long break time is up!'
       }
     }
 
@@ -70,7 +70,7 @@ function App() {
       </li>
     </ul>
     <Button title="Settings" _callback={SettingsBtn} />
-    <CustomizedSnackbars title={title()}></CustomizedSnackbars>
+    <CustomizedSnackbars severity="success" title={title()}></CustomizedSnackbars>
     <div className="time-container">
         <div className='time-wrapper'>
              <CountdownAnimation

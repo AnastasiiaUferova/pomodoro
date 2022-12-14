@@ -1,14 +1,15 @@
 import React, { useState, useContext } from 'react';
 import Button from "./Button";
 import { SettingsContext } from "../context/SettingsContext";
-import image from "../images/Pic.svg"
+import image from "../images/Pic.svg";
+import CustomizedSnackbars from "../components/Alert";
 
 const SetPomodoro = () => {
 
-    const {updateExecute} = useContext(SettingsContext) //take function updateExecute from context
+    const {updateExecute, setOpen} = useContext(SettingsContext) //take function updateExecute from context
 
     const [newTimer, setNewTimer] = useState({
-        work: 1,
+        work: 25,
         short: 5,
         long: 25,
         active: 'work'
@@ -42,7 +43,10 @@ const SetPomodoro = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateExecute(newTimer)
+        if (!newTimer.work | !newTimer.long | !newTimer.short) {
+            setOpen(true);
+        }
+       else updateExecute(newTimer)
     }
 
     return (
@@ -57,7 +61,7 @@ const SetPomodoro = () => {
                 </div>
                 <Button title="Set Timer"  _callback={handleSubmit}/>
             </form>
-
+            <CustomizedSnackbars severity="warning" title="Set the time on all your timers!"></CustomizedSnackbars>
         </div>
 
     )
